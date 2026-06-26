@@ -764,3 +764,63 @@ ANIS STORE
 © 2026 ANIS STORE - جميع الحقوق محفوظة
 </p>
 </footer>
+<!-- ================= Order Popup ================= -->
+<div id="orderPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);justify-content:center;align-items:center;z-index:99999;">
+
+<div style="background:#161b22;width:95%;max-width:420px;padding:25px;border-radius:18px;border:2px solid #00aaff;">
+
+<h2 style="text-align:center;color:#00aaff;">
+🛒 إنشاء طلب
+</h2>
+
+<input
+id="serviceName"
+type="text"
+readonly
+style="width:100%;margin-top:20px;padding:15px;border-radius:10px;border:none;background:#0d1117;color:white;">
+
+<input
+id="serviceQuantity"
+type="number"
+placeholder="الكمية"
+style="width:100%;margin-top:15px;padding:15px;border-radius:10px;border:none;background:#0d1117;color:white;">
+
+<input
+id="serviceLink"
+type="text"
+placeholder="رابط الحساب أو المنشور"
+style="width:100%;margin-top:15px;padding:15px;border-radius:10px;border:none;background:#0d1117;color:white;">
+
+<button
+id="sendOrder"
+style="width:100%;margin-top:20px;padding:15px;background:#00aaff;border:none;border-radius:12px;color:white;font-size:18px;font-weight:bold;cursor:pointer;">
+إرسال الطلب
+</button>
+
+<button
+onclick="closePopup()"
+style="width:100%;margin-top:10px;padding:15px;background:#333;border:none;border-radius:12px;color:white;cursor:pointer;">
+إلغاء
+</button>
+
+</div>
+</div>
+<script>
+function openPopup(service, quantity) {
+    document.getElementById("orderPopup").style.display = "flex";
+    document.getElementById("serviceName").value = service;
+    document.getElementById("serviceQuantity").value = quantity;
+    document.getElementById("serviceLink").value = "";
+}
+
+function closePopup() {
+    document.getElementById("orderPopup").style.display = "none";
+}
+
+window.onclick = function(e) {
+    const popup = document.getElementById("orderPopup");
+    if (e.target === popup) {
+        closePopup();
+    }
+}
+</script>
